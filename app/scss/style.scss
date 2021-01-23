@@ -270,7 +270,7 @@
         bottom: -23px;
         right: -23px;
     }
-    &__item {;
+    &__item {
         background-color: #fff;
         padding: 60px 40px;
         box-shadow: 20px 0px 60px 0px rgba(202, 202, 202, 0.35);
@@ -356,5 +356,52 @@
         transition: all .2s;
     }
 }
+
+.video-fashion {
+    background-color: $bg;
+    background-image: url('../images/decor/pattern.svg');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 125px 0;
+    &__inner {
+        display: flex;
+    }
+    &__popup {
+        margin-right: 60px;
+        height: 480px;
+        max-width: 535px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    &__content {
+        max-width: 570px;
+    }
+    &__subtitle {
+        @extend %quicksand-500;
+        color: $accent;
+        padding-top: 75px;
+        font-size: 22px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    &__title {
+        text-align: left;
+    }
+    &__text {
+        margin-bottom: 55px;
+    }
+    &__link {
+        @extend %btn;
+        letter-spacing: 3px;
+    }
+}
+
+
 
 @import "media";
