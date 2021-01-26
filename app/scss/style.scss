@@ -741,6 +741,7 @@
         border: none;
         width: 100%;
         cursor: pointer;
+        letter-spacing: 3px;
     }
     &__lost-pass {
         margin-top: 12px;
@@ -748,6 +749,9 @@
         &:hover {
             color: $accent;
         }
+    }
+    &__text {
+        margin-bottom: 25px;
     }
 }
 
