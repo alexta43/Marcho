@@ -402,6 +402,189 @@
     }
 }
 
+.product {
+    text-align: center;
+    padding: 105px 0 120px;
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 45px 30px;
+    }
+    &__link {
+        text-transform: uppercase;
+        border: 1px solid $accent;
+        color: $title;
+        display: inline-block;
+        padding: 12px 26px;
+        letter-spacing: 3px;
+        margin-top: 50px;
+    }  
+}
+
+.product-item {
+    max-width: 370px;
+    &__img-box {
+        position: relative;
+        height: 370px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+    &__link-box {
+        position: absolute;
+        align-items: center;
+        left: 0;
+        right: 0;
+        bottom: 50px;
+        background-color: #fff;
+        display: inline-block;
+        width: 220px;
+        height: 50px;
+        margin: 0 auto;
+        border-radius: 30px;
+        box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
+        display: flex;
+        justify-content: space-around;
+        transform: translateY(300%);
+        transition: all .3s;
+    }
+    &__btn {
+        display: inherit;
+        border: none;
+        background-color: transparent;
+        text-align: center;
+        cursor: pointer;
+        path {
+            transition: all .2s;
+        }
+    }
+    &__btn--line::before,
+    &__btn--line::after {
+        content: "";
+        position: absolute;
+        height: 30px;
+        width: 1px;
+        background-color: #ececec;
+        top: 10px;
+    }
+    &__btn--line::before {
+        left: 70px;
+    }
+    &__btn--line::after {
+        right: 85px;
+    }
+    &__link { 
+        display: inherit;
+        path {
+            transition: all .2s;
+        }
+    }
+    &__btn:hover,
+    &__link:hover {
+        path {
+            fill: $accent;
+        }
+    }
+    &__images {
+        object-fit: cover;
+    }
+    &__title {
+        color: $title;
+        padding: 15px 0 20px;
+    }
+    &__price {
+        display: flex;
+        justify-content: center;
+        @extend %roboto-500;
+    }
+    &__new-price{
+        padding: 0 11px;
+        color: $title;
+    }
+    &__old-price {
+        padding: 0 11px;
+        text-decoration: line-through;
+    }
+
+    &:hover {
+        .product-item__link-box {
+            transform: translateY(0)
+        }
+    }
+    &--sale {
+        .product-item__img-box::before {
+            content: "SALE";
+            @extend %btn;
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            line-height: 1;
+            padding: 8px 10px;
+        }
+    }
+}
+
+.star {
+    margin: 0 auto;
+}
+
+.promo {
+    background-image: url('../images/promo-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 150px 0 160px;
+    text-align: center;
+    &__inner {
+        max-width: 570px;
+        width: 100%;
+        margin-left: auto;
+    }
+    &__subtitle {
+        color: $accent;
+        text-transform: uppercase;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    &__clock {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 55px;
+    }
+    &__clock-item {
+        background-color: #fff;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        span {
+            font-size: 48px;
+            @extend %roboto-700;
+            color: $title;
+            margin: 12px 0 7px;
+        }
+    }
+    &__link {
+        text-transform: uppercase;
+        border: 1px solid $accent;
+        color: $title;
+        display: inline-block;
+        padding: 12px 28px;
+        letter-spacing: 3px;
+        margin-top: 55px;
+    }
+}
+
+.partners {
+    padding-top: 75px;
+    &__list {
+        height: 170px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
 
 
 @import "media";
