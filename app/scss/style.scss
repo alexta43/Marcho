@@ -755,7 +755,38 @@
     }
 }
 
-
+.page-404 {
+    padding: 110px 0 120px;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__content {
+        max-width: 570px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    &__title {
+        color: #28384f;
+        font-size: 48px;
+        line-height: 52px;
+        margin-bottom: 25px;
+        @extend %roboto-700;
+    }
+    &__text {
+        margin-bottom: 50px;
+        max-width: 475px;
+    }
+    &__link {
+        background-color: $accent;
+        text-transform: uppercase;
+        color: #fff;
+        padding: 14px 30px;
+        @extend %roboto-400;
+        box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+}
 
 
 
