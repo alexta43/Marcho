@@ -13,6 +13,20 @@ $(function () {
     $('.product-item').removeClass('product-item--list');
   });
 
+  $('.product-slide__thumbs').slick({
+    asNavFor: '.product-slide__big',
+    focusOnSelect: true,
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    vertical: true,
+    draggable: false
+  });
+  $('.product-slide__big').slick({
+    asNavFor: '.product-slide__thumbs',
+    draggable: false,
+    arrows: false
+  });
+
   $('.top-slider__inner').slick({
     dots: true,
     arrows: false,
@@ -21,7 +35,7 @@ $(function () {
     autoplaySpeed: 2000
   });
 
-  $('.select-style').styler();
+  $('.select-style, .product-one__item-num').styler();
 
   $('.filter-price__input').ionRangeSlider({
     type: "double",
