@@ -723,30 +723,6 @@
     &__item-box {
         padding: 30px 40px;
     }
-    &__item-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-    &__item-author,
-    &__item-data {
-        padding-left: 30px;
-        position: relative;
-        &::before {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: 0;
-            top: 3px;
-        }
-    }
-    &__item-author::before {
-        background-image: url("../images/icons/user-gray.svg");
-    }
-    &__item-data::before {
-        background-image: url("../images/icons/time.svg");
-    }
     &__item-title {
         color: $title;
         font-size: 22px;
@@ -765,6 +741,35 @@
         right: -14px;
         top: 8px;
         background-image: url("../images/icons/arrow-gray.svg");
+    }
+}
+
+.blog-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    &__author,
+    &__date {
+        padding-left: 30px;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 0;
+            top: 3px;
+        }
+    }
+    &__author {
+        &::before {
+            background-image: url("../images/icons/user-gray.svg"); 
+        }
+    }
+    &__data {
+        &::before {
+            background-image: url("../images/icons/time.svg");
+        }
     }
 }
 
@@ -1551,6 +1556,7 @@
         @extend %btn;
     }
 }
+
 .related {
     padding: 50px 0 120px;
     &-item__link {
@@ -1579,15 +1585,53 @@
     }
 }
 
+.blog-page {
+    padding: 120px 0 60px;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__content {
+        width: 770px;
+        margin-right: 30px;
+    }
+    &__aside {
+        width: 370px;
+    }
+    &__item {
+        margin-bottom: 60px;
+    }
+    &__item-link {
+        display: block;
+        color: inherit;
+        @extend %roboto-500;
+        font-size: 22px;
+    }
+    &__img {
+        max-width: 770px;
+        height: 450px;
+        object-fit: cover;
+        display: block;
+    }
+    &__item-box {
+        border: 1px solid #ececec;
+        border-top: none;
+        padding: 40px;
+    }
+    &__item-title {
+        color: $title;
+        margin-bottom: 20px;
+    }
+    .blog-box {
+        justify-content: start;
+        &__author {
+            margin-right: 30px;
+        }
+    }
+}
 
 
 
 
 
-
-
-
-
-
-
-@import "media";
+@import "media"

@@ -1,6 +1,6 @@
 $(function () {
 
-  $('.product-tabs__top-item').on('click', function(e) {
+  $('.product-tabs__top-item').on('click', function (e) {
     e.preventDefault();
     $('.product-tabs__top-item').removeClass('product-tabs__top-item--active');
     $(this).addClass('product-tabs__top-item--active');
@@ -63,49 +63,50 @@ $(function () {
     starWidth: "17px",
     normalFill: "#ccccce",
     ratedFill: "#ffc35b",
-    readOnly: "true"
+    readOnly: "true",
+    starSvg: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14pt" height="14pt" viewBox="0 0 14 14" version="1.1"><g id="surface1"><path style=" stroke:none;fill-rule:nonzero;fill-opacity:1;"d="M 6.304688 0.484375 L 4.71875 4.109375 L 1.164062 4.6875 C 0.527344 4.792969 0.273438 5.675781 0.734375 6.183594 L 3.300781 9 L 2.695312 12.976562 C 2.585938 13.695312 3.261719 14.234375 3.824219 13.898438 L 7 12.019531 L 10.175781 13.898438 C 10.738281 14.230469 11.414062 13.695312 11.304688 12.976562 L 10.699219 9 L 13.265625 6.183594 C 13.726562 5.675781 13.472656 4.792969 12.835938 4.6875 L 9.28125 4.109375 L 7.695312 0.484375 C 7.414062 -0.15625 6.589844 -0.167969 6.304688 0.484375 Z M 6.304688 0.484375 "/></g></svg >'
   });
 
-     function getTimeRemaining(endtime) {
-      const total = Date.parse(endtime) - Date.parse(new Date());
-      const seconds = Math.floor((total / 1000) % 60);
-      const minutes = Math.floor((total / 1000 / 60) % 60);
-      const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-      const days = Math.floor(total / (1000 * 60 * 60 * 24));
-      
-      return {
-        total,
-        days,
-        hours,
-        minutes,
-        seconds
-      };
+function getTimeRemaining(endtime) {
+  const total = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+  return {
+    total,
+    days,
+    hours,
+    minutes,
+    seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  const clock = document.querySelector('.promo__clock');
+  const daysSpan = clock.querySelector('.promo__days');
+  const hoursSpan = clock.querySelector('.promo__hours');
+  const minutesSpan = clock.querySelector('.promo__minutes');
+  const secondsSpan = clock.querySelector('.promo__seconds');
+
+  function updateClock() {
+    const t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
     }
-    
-    function initializeClock(id, endtime) {
-      const clock = document.querySelector('.promo__clock');
-      const daysSpan = clock.querySelector('.promo__days');
-      const hoursSpan = clock.querySelector('.promo__hours');
-      const minutesSpan = clock.querySelector('.promo__minutes');
-      const secondsSpan = clock.querySelector('.promo__seconds');
-    
-      function updateClock() {
-        const t = getTimeRemaining(endtime);
-    
-        daysSpan.innerHTML = t.days;
-        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-    
-        if (t.total <= 0) {
-          clearInterval(timeinterval);
-        }
-      }
-    
-      updateClock();
-      const timeinterval = setInterval(updateClock, 1000);
-    }
-    const deadline = $('.promo__clock').attr('data-time');
-    initializeClock('promo__clock', deadline);
+  }
+
+  updateClock();
+  const timeinterval = setInterval(updateClock, 1000);
+}
+const deadline = $('.promo__clock').attr('data-time');
+initializeClock('promo__clock', deadline);
 
 });
