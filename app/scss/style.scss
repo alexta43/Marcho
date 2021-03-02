@@ -99,9 +99,9 @@
         padding-left: 18px;
     }
     &__social-link {
-        transition: all 0.4s;
         path {
             fill: $default;
+            transition: all .3s;
         }
         &:hover {
             path {
@@ -749,7 +749,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
     &__author,
-    &__date {
+    &__data {
         padding-left: 30px;
         position: relative;
         &::before {
@@ -1587,6 +1587,48 @@
 
 .blog-page {
     padding: 120px 0 60px;
+    &__item--slider {
+        &.blog-page__item-box {
+            margin-top: -7px;
+        }
+    }
+    &__slider {
+        .slick-prev,
+        .slick-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+            background-color: $accent;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all .2s;
+            outline: none;
+            box-shadow: 0px 7px 20px 0px rgba(254, 62, 87, 0.3);             
+            path {
+                fill: #fff;
+            }
+        }
+        .slick-prev {
+            left: 40px;
+        }
+        .slick-next {
+            right: 40px;
+        }
+        .slick-disabled {
+            background-color: #fff;
+            box-shadow: 0px 7px 20px 0px rgba(168, 168, 168, 0.3); 
+            path {
+                fill: $accent;
+            }
+        }
+    }
     &__inner {
         display: flex;
         justify-content: space-between;
@@ -1600,18 +1642,46 @@
     }
     &__item {
         margin-bottom: 60px;
-    }
-    &__item-link {
-        display: block;
-        color: inherit;
-        @extend %roboto-500;
-        font-size: 22px;
+        &.blog-page__item--no-image {
+            border: none;
+            box-shadow: 0px 20px 60px 0px rgba(202, 202, 202, 0.35);
+        }
     }
     &__img {
         max-width: 770px;
         height: 450px;
         object-fit: cover;
         display: block;
+        position: relative;
+    }
+    &__item-image__wrapper {
+        position: relative;
+        &:hover .blog-page__item-link__wrapper{
+            opacity: 1;
+        }
+    }
+    &__item-link__wrapper {  
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: all .3s;
+    }
+    &__item-link {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__item-btn {
+       position: absolute;
+    }
+    &__item-btn--play {
+        margin-top: -15px;
     }
     &__item-box {
         border: 1px solid #ececec;
@@ -1622,10 +1692,115 @@
         color: $title;
         margin-bottom: 20px;
     }
+    &__itemtitle-link {
+        display: block;
+        color: inherit;
+        @extend %roboto-500;
+        font-size: 22px;
+        display: inline;
+        transition: all .2s;
+        &:hover {
+            color: $accent;
+        }
+    }
     .blog-box {
         justify-content: start;
         &__author {
             margin-right: 30px;
+        }
+    }
+}
+
+.person {
+    border: 1px solid #ececec;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 25px;
+    &__img {
+        display: inline-block;
+        height: 160px;
+        width: 160px;
+        object-fit: cover;
+        margin: 0 auto 35px;
+    }
+    &__name {
+        color: $title;
+        @extend %roboto-700;
+        font-size: 18px;
+    }
+    &__position {
+        color: $accent;
+        margin-bottom: 10px;
+    }
+    &__text {
+        margin-bottom: 20px;
+    }
+    &__social-link {
+        margin: 0 8px;
+        path {
+            fill: $default;
+            transition: all .3s;
+        }
+        &:hover {
+            path {
+                fill: $accent;
+            }
+        }
+    }
+}
+
+.latest-post {
+    border: 1px solid #ececec;
+    padding: 35px 25px 40px;
+    &__title {
+        font-size: 22px;
+        text-transform: uppercase;
+        color: $title;
+        margin-bottom: 35px;
+        @extend %roboto-400;
+    }
+    &__item {
+        display: flex;
+        margin-bottom: 20px;
+        & + .latest-post__item {
+            border-top: 1px solid #ececec;
+            padding-top: 20px;
+        }
+    }
+    &__img-link {
+        display: block;
+        min-width: 80px;
+    }
+    &__img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+    &__box {
+        width: 215px;
+        margin-left: 15px;
+    }
+    &__box-title {
+        color: $title;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 5px;
+        @extend %roboto-400;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__data {
+        padding-left: 26px;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            background-image: url('../images/icons/calendar.svg');
+            width: 16px;
+            height: 16px;
         }
     }
 }
