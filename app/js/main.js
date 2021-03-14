@@ -1,4 +1,12 @@
 $(function () {
+  $('.footer-top__title').on('click', function() {
+    $(this).next().slideToggle()
+    $(this).toggleClass('active')
+  })
+
+  $('.menu__btn').on('click', function() {
+    $('.menu__list').toggleClass('menu__list--active')
+  })
 
   $('.product-tabs__top-item').on('click', function (e) {
     e.preventDefault();

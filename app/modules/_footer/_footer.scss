@@ -52,6 +52,7 @@ footer {
         line-height: 1;
         margin-bottom: 40px;
         color: $title;
+        pointer-events: none;
     }
     &__link {
         display: block;
@@ -84,11 +85,73 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 75px;
+    flex-wrap: wrap;
+    min-height: 75px;
     font-size: 12px;
     &__accept-img {
         display: inline;
         margin-left: 25px;
         vertical-align: middle;
+    }
+}
+
+@media(max-width: 1050px) {
+    .footer-top {
+        flex-wrap: wrap;
+        &-item__form {
+            max-width: 100%;
+            margin-top: 30px;
+        }
+    }
+}
+
+@media(max-width: 860px) {
+    .footer-top {
+        &__contact {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 30px;
+        }
+    }
+}
+
+@media(max-width: 620px) {
+    .footer-bottom {
+        justify-content: center;
+        &__copy {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+@media(max-width: 450px) {
+    .footer-top {
+        &__nav {
+            margin-top: 30px;
+        }
+        &__title {
+            margin-bottom: 20px;
+            pointer-events: all;
+        }
+        &__list {
+            display: none;
+        }
+        &__form {
+            flex-wrap: wrap;
+        }
+        &__form-input {
+            max-width: 100%;
+            margin-bottom: 5px;
+        }
+        &__form-btn {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    .footer-bottom {
+        &__accept-img {
+            margin-left: 15px;
+        }
     }
 }
