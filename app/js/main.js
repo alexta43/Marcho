@@ -1,4 +1,8 @@
 $(function () {
+  $('.shop__filter-btn').on('click', function() {
+    $('.shop__filters').slideToggle()
+  })
+
   $('.footer-top__title').on('click', function() {
     $(this).next().slideToggle()
     $(this).toggleClass('active')
@@ -24,10 +28,12 @@ $(function () {
 
   $('.button-list').on('click', function () {
     $('.product-item').addClass('product-item--list');
+    $('.shop-content__inner').addClass('shop-content--nogrid')
   });
 
   $('.button-grid').on('click', function () {
     $('.product-item').removeClass('product-item--list');
+    $('.shop-content__inner').removeClass('shop-content--nogrid')
   });
 
   $('.product-slide__thumbs').slick({
@@ -36,12 +42,20 @@ $(function () {
     slidesToScroll: 1,
     slidesToShow: 4,
     vertical: true,
-    draggable: false
+    draggable: false,
   });
   $('.product-slide__big').slick({
     asNavFor: '.product-slide__thumbs',
     draggable: false,
-    arrows: false
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1051,
+        settings: {
+          draggable: true,
+        },
+      }
+    ]
   });
 
   $('.top-slider__inner').slick({
